@@ -1,4 +1,4 @@
-package modelo.entidades;
+package modelo.entidades148;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -74,5 +74,15 @@ public class Reservas {
 				+ duracaoDias()
 				+ " noites!";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

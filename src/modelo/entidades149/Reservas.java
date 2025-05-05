@@ -1,4 +1,4 @@
-package modelo.entidades;
+package modelo.entidades149;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,9 +57,20 @@ public class Reservas {
 	}
 	
 	// ATUALIZA DATAS ENTRADA E SAÍDA
-	public void atualizaDatas(Date dataEntrada, Date dataSaida) {
+	public String atualizaDatas(Date dataEntrada, Date dataSaida) {
+		
+		Date dataAgora = new Date();
+		if (dataEntrada.before(dataAgora) || dataSaida.before(dataAgora)) {
+			return "Erro na reserva: a data para atualização não deve ser anterior a data atual!";
+		}
+		if (!dataSaida.after(dataEntrada)) {
+			return "Erro na reserva, a data de saída deve ser posterior a data de entrada!";
+		}
+		
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
+		
+		return null;
 	}
 	
 	@Override

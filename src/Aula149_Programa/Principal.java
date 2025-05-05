@@ -1,11 +1,11 @@
-package Programa;
+package Aula149_Programa;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import modelo.entidades.Reservas;
+import modelo.entidades149.Reservas;
 
 
 public class Principal {
@@ -41,25 +41,15 @@ public class Principal {
 			datasaida = sdf.parse(sc.next());
 			
 			// CRIA UMA DATA ATUAL PARA VERIFICA SE A DATA FUTURA FOI LANÇADA ANTES DO DIA ATUAL
-			Date dataAgora = new Date();
-			if (dataEntrada.before(dataAgora) || datasaida.before(dataAgora)) {
-				System.out.println("Erro na reserva: a data para atualização não deve ser anterior a data atual!");
-			}
-			else if (!datasaida.after(dataEntrada)) {
-				System.out.println("Erro na reserva, a data de saída deve ser posterior a data de entrada!");
+			// MÉTODO QUE ATUALIZA AS DATAS
+			String erro = reservas.atualizaDatas(dataEntrada, datasaida);
+			if (erro != null) {
+				System.out.println("Erro na reserva: " + erro);
 			}
 			else {
-				
-				// MÉTODO QUE ATUALIZA AS DATAS
-				reservas.atualizaDatas(dataEntrada, datasaida);
 				System.out.println("Data atualizada da reserva: " + reservas);
-					
-			}
-			
-			
-			
+			}	
 		}
-
 	}
 
 }
